@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+
+if [ ! "$1" ] ; then
+    echo "Usage: $0 BINARY"
+    exit 1;
+fi
+WHICH=$(which "$1" 2>/dev/null )
+if [ ! "$WHICH" ] ; then
+    echo "$1 not in \$PATH" >&2
+    exit 2
+fi
+PACKET=$(pacman -Qoq "$WHICH")
+if [ ! "$PACKET" ] ; then
+    # pacman already prints out error message
+    exit 3
+fi
+PACKET_AND_VERSION=$(pacman -Q "$PACKET")
+INFO=$(pacman -Qi "$PACKET" | grep '^Description' | sed 's/^[^:]* : //')
+if [ ! "$INFO" ] ; then
+    echo "$WHICH: $PACKET_AND_VERSION -no description-"
+    exit
+fi
+echo "$WHICH: $PACKET_AND_VERSION \"$INFO\""
