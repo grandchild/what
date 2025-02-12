@@ -13,6 +13,16 @@ $ what ldd
 /usr/bin/ldd: glibc 2.41+r2+g0a7c7a3e283a-1 "GNU C Library"
 ```
 
+Errors:
+
+```shell
+$ what what
+error: No package owns /home/me/bin/what
+
+$ what binary-that-does-not-exist
+binary-that-does-not-exist not in $PATH
+```
+
 
 ### Installation
 
