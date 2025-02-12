@@ -1,10 +1,16 @@
 # `what` — An enhanced `which` for Archlinux
 
 
-### Usage
+### Usage Examples
 ```shell
 $ what which
 /usr/bin/which: which 2.21-6 "A utility to show the full path of commands"
+
+$ what convert
+/usr/bin/convert: imagemagick 7.1.1.43-1 "An image viewing/manipulation program"
+
+$ what ldd
+/usr/bin/ldd: glibc 2.41+r2+g0a7c7a3e283a-1 "GNU C Library"
 ```
 
 
